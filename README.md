@@ -1,39 +1,39 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center">What the f*ck Python! 😱</h1>
-<p align="center">Exploring and understanding Python through surprising snippets.</p>
+<h1 align="center">Python, какого х*ра! 😱</h1>
+<p align="center">Изучаем и разбираемся в Python через неожиданные примеры.</p>
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
+Другие переводы: [Китайский 中文](https://github.com/leisurelicht/wtfpython-cn) | [Вьетнамский Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Испанский Español](https://github.com/JoseDeFreitas/wtfpython-es) | [Корейский 한국어](https://github.com/buttercrab/wtfpython-ko) | [Добавить перевод](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
-Other modes: [Interactive](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
+Другие режимы: [Интерактивный](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
+Python - прекрасно спроектированный высокоуровневый исполняемый язык программирования. Он предоставляет нам множество инструментов для комфорта разработчика. Однако на первый взгляд результат выполнения приведенных здесь кусочков кода на Python может показаться неочевидным.
 
-Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
+Перед тобой занимательный проект, цель которого - объяснить, что именно происходит "под капотом" нескольких контр-интуитивных примеров и не слишком распространенных возможностей Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+И хотя некоторые примеры из тех, что ты увидишь ниже, не обязательно вызовут искреннюю реакцию "Какого х*ра?!", они раскрывают занятное поведение Python, с которым ты, вероятно, не знаком. Мне кажется (и хочется верить, что ты со мной согласишься), что это интригующий способ изучения происходящего "под капотом" у языка программирования.
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
+А если ты опытный Python-разработчик, эти сниппеты позволят попробовать свои силы и попытаться угадать, какого же все-таки х*ра. Ну или освежить память, если ты уже сталкивался с ними раньше! :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision). 
+PS: Если ты здесь не впервые, узнать о доработках можно [здесь](https://github.com/satwikkansal/wtfpython/releases/) (примеры, помеченные звездочкой, добавлены в последнем существенном обновлении). 
 
-So, here we go...
+Погнали!
 
-# Table of Contents
+# Оглавление
 
 <!-- Generated using "markdown-toc -i README.md --maxdepth 3"-->
 
 <!-- toc -->
 
-- [Structure of the Examples](#structure-of-the-examples)
-    + [▶ Some fancy Title](#-some-fancy-title)
-- [Usage](#usage)
-- [👀 Examples](#-examples)
-  * [Section: Strain your brain!](#section-strain-your-brain)
-    + [▶ First things first! *](#-first-things-first-)
-    + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
-    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
-    + [▶ Hash brownies](#-hash-brownies)
+- [Структура примеров](#structure-of-the-examples)
+    + [▶ Мудрёный заголовок](#-some-fancy-title)
+- [Как пользоваться этим гайдом](#usage)
+- [👀 Примеры](#-examples)
+  * [Раздел: Напряги мозги!](#section-strain-your-brain)
+    + [▶ Первым делом *](#-first-things-first-)
+    + [▶ Строки бывают обманчивы](#-strings-can-be-tricky-sometimes)
+    + [▶ Осторожнее с последовательными операциями](#-be-careful-with-chained-operations)
+    + [▶ Как не нужно использовать `is`](#-how-not-to-use-is-operator)
+    + [▶ Хашбрауни](#-hash-brownies)
     + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
     + [▶ Disorder within order *](#-disorder-within-order-)
     + [▶ Keep trying... *](#-keep-trying-)
@@ -59,7 +59,7 @@ So, here we go...
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-  * [Section: Slippery Slopes](#section-slippery-slopes)
+  * [Раздел: Кривые дорожки](#section-slippery-slopes)
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
     + [▶ The out of scope variable](#-the-out-of-scope-variable)
@@ -67,11 +67,11 @@ So, here we go...
     + [▶ Lossy zip of iterators *](#-lossy-zip-of-iterators-)
     + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
     + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-    + [▶ Catching the Exceptions](#-catching-the-exceptions)
+    + [▶ Отлов исключений](#-catching-the-exceptions)
     + [▶ Same operands, different story!](#-same-operands-different-story)
     + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-    + [▶ Rounding like a banker *](#-rounding-like-a-banker-)
-    + [▶ Needles in a Haystack *](#-needles-in-a-haystack-)
+    + [▶ Округляем как банкиры *](#-rounding-like-a-banker-)
+    + [▶ Иголки в стоге сена *](#-needles-in-a-haystack-)
     + [▶ Splitsies *](#-splitsies-)
     + [▶ Wild imports *](#-wild-imports-)
     + [▶ All sorted? *](#-all-sorted-)
@@ -88,90 +88,90 @@ So, here we go...
     + [▶ Let's mangle](#-lets-mangle)
   * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     + [▶ Skipping lines?](#-skipping-lines)
-    + [▶ Teleportation](#-teleportation)
+    + [▶ Телепортация](#-teleportation)
     + [▶ Well, something is fishy...](#-well-something-is-fishy)
-  * [Section: Miscellaneous](#section-miscellaneous)
-    + [▶ `+=` is faster](#--is-faster)
+  * [Раздел: Разное](#section-miscellaneous)
+    + [▶ `+=` быстрее](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups-)
     + [▶ Bloating instance `dict`s *](#-bloating-instance-dicts-)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
+- [Благодарности](#acknowledgements)
 - [🎓 License](#-license)
   * [Surprise your friends as well!](#surprise-your-friends-as-well)
   * [More content like this?](#more-content-like-this)
 
 <!-- tocstop -->
 
-# Structure of the Examples
+# Структура примеров
 
-All the examples are structured like below:
+Все примеры структурированы так:
 
-> ### ▶ Some fancy Title
+> ### ▶ Мудрёный заголовок
 >
 > ```py
-> # Set up the code.
-> # Preparation for the magic...
+> # Некий код
+> # Подготовка магии...
 > ```
 >
-> **Output (Python version(s)):**
+> **Вывод (Версии Python):**
 >
 > ```py
 > >>> triggering_statement
-> Some unexpected output
+> Неожиданный вывод
 > ```
-> (Optional): One line describing the unexpected output.
+> (Опционально): Одна строчка с объяснением неожиданного вывода.
 >
 >
-> #### 💡 Explanation:
+> #### 💡 Объяснение:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * Короткое объяснение того, что происходит и почему оно происходит.
 > ```py
-> # Set up code
-> # More examples for further clarification (if necessary)
+> # Некий код
+> # Еще примеры для дальнейшего прояснения (если необходимо)
 > ```
-> **Output (Python version(s)):**
+> **Вывод (версии Python):**
 >
 > ```py
-> >>> trigger # some example that makes it easy to unveil the magic
-> # some justified output
+> >>> trigger # пример, легким движением руки разоблачающий магию
+> # теперь уже ожидаемый вывод
 > ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified before the output.
+**Ремарка:** Все примеры протестированы в интерактивном интерпретаторе Python 3.5.2 и должны работать для всех версий Python, если перед выводом в явном виде не сказано об обратном.
 
-# Usage
+# Как пользоваться этим гайдом
 
-A nice way to get the most out of these examples, in my opinion, is to read them chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+Максимальную пользу от этих примеров, на мой взгляд, можно получить, читая их хронологически, и для каждого примера:
+- Внимательно прочитать исходный код, setting up пример. Опытный Python-разработчик должен успешно предугадать результат в большинстве случаев.
+- Прочитать вывод, который выдаст сниппет, и
+  + проверить, что вывод совпал с твоими ожиданиями;
+  + убедиться, что знаешь причину, по которой вывод получился именно таким.
+    - если не знаешь (что совершенно нормально), сделай глубокий вдох и прочитай объяснение (а если все еще не станет понятно, поори! И создай баг-репорт [тут](https://github.com/satwikkansal/wtfpython/issues/new)).
+    - если знаешь, бережно похлопай себя по плечу и переходи к следующему примеру.
 
-PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),
+PS: А еще ты можешь читать WTFPython прямо в командной строке с помощью [pypi пакета](https://pypi.python.org/pypi/wtfpython),
 ```sh
 $ pip install wtfpython -U
 $ wtfpython
 ```
 ---
 
-# 👀 Examples
+# 👀 Примеры
 
-## Section: Strain your brain!
+## Раздел: Напряги мозги!
 
-### ▶ First things first! *
+### ▶ Первым делом *
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
 
-For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popular. Let's check it out,
+Почему-то "моржовый оператор" (`:=`) из Python 3.8 очень широко разошелся. Взглянем на него:
 
 1\.
 
 ```py
-# Python version 3.8+
+# Версия Python 3.8+
 
 >>> a = "wtf_walrus"
 >>> a
@@ -183,7 +183,7 @@ File "<stdin>", line 1
       ^
 SyntaxError: invalid syntax
 
->>> (a := "wtf_walrus") # This works though
+>>> (a := "wtf_walrus") # А так сработало
 'wtf_walrus'
 >>> a
 'wtf_walrus'
@@ -192,7 +192,7 @@ SyntaxError: invalid syntax
 2 \.
 
 ```py
-# Python version 3.8+
+# Python 3.8+
 
 >>> a = 6, 9
 >>> a
@@ -203,19 +203,19 @@ SyntaxError: invalid syntax
 >>> a
 6
 
->>> a, b = 6, 9 # Typical unpacking
+>>> a, b = 6, 9 # обычная распаковка
 >>> a, b
 (6, 9)
->>> (a, b = 16, 19) # Oops
+>>> (a, b = 16, 19) # Ой
   File "<stdin>", line 1
     (a, b = 16, 19)
           ^
 SyntaxError: invalid syntax
 
->>> (a, b := 16, 19) # This prints out a weird 3-tuple
+>>> (a, b := 16, 19) # Эта команда напечатает странный трехэлементный кортеж
 (6, 16, 19)
 
->>> a # a is still unchanged?
+>>> a # изменилось ли содержимое a?
 6
 
 >>> b
@@ -224,33 +224,33 @@ SyntaxError: invalid syntax
 
 
 
-#### 💡 Explanation
+#### 💡 Объяснение
 
-**Quick walrus operator refresher**
+**Освежим в памяти моржовый оператор**
 
-The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situations where you'd want to assign values to variables within an expression.
+Моржовый оператор (`:=`) появился в Python 3.8. Он бывает полезен в ситуациях, когда  переменной нужно присвоить значения внутри выражения.
 
 ```py
 def some_func():
-        # Assume some expensive computation here
+        # Здесь некие дорогущие вычисления
         # time.sleep(1000)
         return 5
 
-# So instead of,
+# Тут вместо плохой практики
 if some_func():
-        print(some_func()) # Which is bad practice since computation is happening twice
+        print(some_func()) # (плоха она потому, что вычисление происходит дважды)
 
-# or
+# или
 a = some_func()
 if a:
     print(a)
 
-# Now you can concisely write
+# можно лаконично написать
 if a := some_func():
         print(a)
 ```
 
-**Output (> 3.8):**
+**Вывод (> 3.8):**
 
 ```py
 5
@@ -258,15 +258,15 @@ if a := some_func():
 5
 ```
 
-This saved one line of code, and implicitly prevented invoking `some_func` twice.
+Это сэкономит одну строку кода и в неявной форме предотвратит вызов `some_func` дважды.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
+- Взятие в скобки "присваемого выражения" (использование моржового оператора) ограничено на верхнем уровне, поэтому и `SyntaxError` в `a := "wtf_walrus"` в первом примере. Взятие в скобки сработало как надо и присвоило переменной `a` ее значение.  
 
-- As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
+- Как обычно, взятие в скобки выражения, содержащего оператор `=`, запрещено. Отсюда и синтаксическая ошибка в `(a, b = 6, 9)`. 
 
-- The syntax of the Walrus operator is of the form `NAME:= expr`, where `NAME` is a valid identifier, and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
+- Синтакс моржового оператора имеет форму `NAME:= expr`, где `NAME` - это валидный identifier, а `expr` - валидное выражение. Поэтому  iterable упаковка и распаковка не поддерживается, а значит
 
-  - `(a := 6, 9)` is equivalent to `((a := 6), 9)` and ultimately `(a, 9) ` (where `a`'s value is 6')
+  - `(a := 6, 9)` эквивалентен `((a := 6), 9)` и, в итоге, `(a, 9) ` (где значение `a` равно 6)
 
     ```py
     >>> (a := 6, 9) == ((a := 6), 9)
@@ -274,15 +274,15 @@ This saved one line of code, and implicitly prevented invoking `some_func` twice
     >>> x = (a := 696, 9)
     >>> x
     (696, 9)
-    >>> x[0] is a # Both reference same memory location
+    >>> x[0] is a # Оба обращаются к одному и тому же сегменту памяти
     True
     ```
 
-  - Similarly, `(a, b := 16, 19)` is equivalent to `(a, (b := 16), 19)` which is nothing but a 3-tuple. 
+  - Похожим образом `(a, b := 16, 19)` эквивалентен `(a, (b := 16), 19)`, который является ничем иным, как трехэлементным кортежем. 
 
 ---
 
-### ▶ Strings can be tricky sometimes
+### ▶ Строки бывают обманчивы
 
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
@@ -291,7 +291,7 @@ This saved one line of code, and implicitly prevented invoking `some_func` twice
 >>> a = "some_string"
 >>> id(a)
 140420665652016
->>> id("some" + "_" + "string") # Notice that both the ids are same.
+>>> id("some" + "_" + "string") # Обратите внимание, что идентификаторы одинаковые
 140420665652016
 ```
 
@@ -313,26 +313,26 @@ False
 
 ```py
 >>> a, b = "wtf!", "wtf!"
->>> a is b # All versions except 3.7.x
+>>> a is b # Во всех версиях, кроме 3.7.x
 True
 
 >>> a = "wtf!"; b = "wtf!"
->>> a is b # This will print True or False depending on where you're invoking it (python shell / ipython / as a script)
+>>> a is b # Выведет True или False в зависимости от того, где вызывается (python shell / ipython / как скрипт)
 False
 ```
 
 ```py
-# This time in file some_file.py
+# На этот раз в файле some_file.py
 a = "wtf!"
 b = "wtf!"
 print(a is b)
 
-# prints True when the module is invoked!
+# выводит True при вызове модуля!
 ```
 
 4\.
 
-**Output (< Python3.7 )**
+**Output (< Python3.7)**
 
 ```py
 >>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
@@ -341,17 +341,17 @@ True
 False
 ```
 
-Makes sense, right?
+Логично, да?
 
-#### 💡 Explanation:
-+ The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being "interned," many variables may reference the same string object in memory (saving memory thereby).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
-  ![image](/images/string-intern/string_intern.png)
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
+#### 💡 Объяснение:
++ Поведение в первом и втором сниппете обусловлено оптимизацией CPython, которая называется string interning - интернирование строк. Суть этой оптимизации в том, чтобы в некоторых случаях использовать существующие иммутабельные объекты вместо того, чтобы каждый раз создавать новый объект.
++ После интернирования многие переменные могут указывать на один и тот же строчный объект в памяти (и этим экономить память).
++ В примере выше строки неявно интернированы. Решение о том, стоит ли неявно интернировать строку, зависит от имплементации. Есть несколько правил, которые позволят предугадать, будет ли строка интернирована:
+  * Все строки длиной в 0 или 1 символ интернируются.
+  * Строки интернируются at compile time (`'wtf'` будет интернирована, а `''.join(['w', 't', 'f'])` не будет)
+  * Строки, не состоящие из букв ASCII, цифр или подчеркивания, не интернируются. Так что `'wtf!'` не была интернирована из-за `!`. Имплементация этого правила в CPython есть [тут](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+  ![картинка](/images/string-intern/string_intern.png)
++ Когда `a` и `b` объявляются равными `"wtf!"` в одной и той же строке, интерпретатор Python создает новый объект interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
 + A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
 + The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the fourth snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
@@ -359,14 +359,14 @@ Makes sense, right?
 ---
 
 
-### ▶ Be careful with chained operations
+### ▶ Осторожнее с последовательными операциями
 <!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
 ```py
->>> (False == False) in [False] # makes sense
+>>> (False == False) in [False] # логично
 False
->>> False == (False in [False]) # makes sense
+>>> False == (False in [False]) # логично
 False
->>> False == False in [False] # now what?
+>>> False == False in [False] # а теперь что?
 True
 
 >>> True is False == False
@@ -382,31 +382,31 @@ False
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 Объяснение:
 
-As per https://docs.python.org/3/reference/expressions.html#membership-test-operations
+Согласно https://docs.python.org/3/reference/expressions.html#membership-test-operations,
 
-> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+> Формально, if a, b, c, ..., y, z - это выражения, а op1, op2, ..., opN - операторы сравнения, то a op1 b op2 c ... y opN z эквивалентно a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
 
 While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
 
-* `False is False is False` is equivalent to `(False is False) and (False is False)`
-* `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
-* `1 > 0 < 1` is equivalent to `1 > 0 and 0 < 1` which evaluates to `True`.
-* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
+* `False is False is False` эквивалентно `(False is False) and (False is False)`
+* `True is False == False` эквивалентно `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
+* `1 > 0 < 1` эквивалентно `1 > 0 and 0 < 1`, сводимое к `True`.
+* Выражение `(1 > 0) < 1` эквивалентно `True < 1` и
   ```py
   >>> int(True)
   1
-  >>> True + 1 #not relevant for this example, but just for fun
+  >>> True + 1 # не относится к этому примеру, но забавно
   2
   ```
-  So, `1 < 1` evaluates to `False`
+  Таким образом, `1 < 1` сводится к `False`
 
 ---
 
-### ▶ How not to use `is` operator
+### ▶ Как не нужно использовать `is`
 <!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
-The following is a very famous example present all over the internet.
+Рассмотрим известный пример, который разлетелся по всему интернету.
 
 1\.
 
@@ -437,7 +437,7 @@ True
 ```
 
 3\.
-**Output**
+**Вывод**
 
 ```py
 >>> a, b = 257, 257
@@ -445,7 +445,7 @@ True
 True
 ```
 
-**Output (Python 3.7.x specifically)**
+**Вывод (исключительно Python 3.7.x)**
 
 ```py
 >>> a, b = 257, 257
@@ -453,25 +453,25 @@ True
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 Объяснение:
 
-**The difference between `is` and `==`**
+**Разница между `is` и `==`**
 
-* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
-* `==` operator compares the values of both the operands and checks if they are the same.
-* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
+* оператор `is` проверяет, что оба operands обращаются к одному и тому же объекту (i.e., it checks if the identity of the operands matches or not).
+* оператор `==` сравнивает значения operands и проверяет, равны ли они.
+* Так что `is` нужен для проверки reference equality, а `==`  - для проверки равенства. Пример, чтобы стало совсем понятно:
   ```py
   >>> class A: pass
-  >>> A() is A() # These are two empty objects at two different memory locations.
+  >>> A() is A() # Это два пустых объекта в двух разных областях памяти.
   False
   ```
 
-**`256` is an existing object but `257` isn't**
+**`256` - это существующий объект, а `257` - нет**
 
 When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
 
-Quoting from https://docs.python.org/3/c-api/long.html
-> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
+Цитирую по https://docs.python.org/3/c-api/long.html:
+> текущая имплементация хранит список объектов - целых чисел для всех целых чисел между -5 и 256. Когда вы создаете int, попадающий в этот промежуток, вы получаете просто ссылку на уже существующий объект.  So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
 
 ```py
 >>> id(256)
@@ -494,11 +494,11 @@ Quoting from https://docs.python.org/3/c-api/long.html
 
 Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
 
-Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+Похожая оптимизация применяется и к другим **иммутабельным** (неизменяемым) объектам, например, пустым кортежам. Посколько списки - это объекты изменяемые (мутабельные), `[] is []` вернет `False`, а `() is ()` вернет `True`. В этом состоит объяснение ко второму примеру. Теперь рассмотрим третий:
 
-**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
+**`a` и `b` обращаются к одному и тому же объекту, если объявляются с одним и тем же значением в одной и той же строке.**
 
-**Output**
+**Вывод**
 
 ```py
 >>> a, b = 257, 257
@@ -514,9 +514,9 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 140640774013488
 ```
 
-* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
+* Когда `a` и `b` присваиваются значения `257` в одной и той же строчке, интерпретатор Python создает новый объект, а затем сразу ссылает на него вторую переменную. Если делать это в двух разных строках, интерпретатор не будет "знать" о том, что `257` уже существует в качестве объекта.
 
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
+* Это оптимизация компилятора, поэтому она применима исплючительно к интерактивноой среде. Когда две строки вводятся в запущенный интерпретатор, они компилируются по отдельности, поэтому и оптимизируются тоже по отдельности. Если воспроизвести этот пример в файле `.py`, поведение будет иным, потому что файл компилируется весь целиком. Эта оптимизация не ограничена целыми числами, а работает и для других иммутабельных типов данных вроде строк (можно взглянуть на пример "Strings are tricky") и чисел с плавающей запятой,
 
   ```py
   >>> a, b = 257.0, 257.0
@@ -524,12 +524,12 @@ Similar optimization applies to other **immutable** objects like empty tuples as
   True
   ```
 
-* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
+* Почему это не срабатывает в Python 3.7? Абстрактная причина в том, что такая оптимизация компилятора специфична для имплементации (то есть может меняться с версей, операционной системой и т.д.). Я все еще разбираюсь, какое именно изменение в имплементации вызывает эту проблему, за развитием событий можно следить в этом [issue](https://github.com/satwikkansal/wtfpython/issues/100).
 
 ---
 
 
-### ▶ Hash brownies
+### ▶ Хашбрауни
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
