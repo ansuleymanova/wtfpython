@@ -1,3 +1,151 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Python, какого х*ра! 😱](#python-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE-%D1%85%D1%80%D0%B0-)
+- [Оглавление](#%D0%BE%D0%B3%D0%BB%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5)
+- [Структура примеров](#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2)
+- [Как пользоваться этим гайдом](#%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D1%8D%D1%82%D0%B8%D0%BC-%D0%B3%D0%B0%D0%B9%D0%B4%D0%BE%D0%BC)
+- [👀 Примеры](#-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B)
+  - [Раздел: Напряги мозги!](#%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB-%D0%BD%D0%B0%D0%BF%D1%80%D1%8F%D0%B3%D0%B8-%D0%BC%D0%BE%D0%B7%D0%B3%D0%B8)
+    - [▶ Первым делом *](#%E2%96%B6-%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%BC-%D0%B4%D0%B5%D0%BB%D0%BE%D0%BC-)
+      - [💡 Объяснение](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+    - [▶ Строки бывают обманчивы](#%E2%96%B6-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8-%D0%B1%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D0%BE%D0%B1%D0%BC%D0%B0%D0%BD%D1%87%D0%B8%D0%B2%D1%8B)
+      - [💡 Объяснение:](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+    - [▶ Осторожнее с последовательными операциями](#%E2%96%B6-%D0%BE%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%B6%D0%BD%D0%B5%D0%B5-%D1%81-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%D0%B8-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%D0%BC%D0%B8)
+      - [💡 Объяснение:](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-1)
+    - [▶ Как не нужно использовать `is`](#%E2%96%B6-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B5-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-is)
+      - [💡 Объяснение:](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-2)
+    - [▶ Хашбрауни](#%E2%96%B6-%D1%85%D0%B0%D1%88%D0%B1%D1%80%D0%B0%D1%83%D0%BD%D0%B8)
+      - [💡 Explanation](#-explanation)
+    - [▶ Deep down, we're all the same.](#%E2%96%B6-deep-down-were-all-the-same)
+      - [💡 Explanation:](#-explanation)
+    - [▶ Disorder within order *](#%E2%96%B6-disorder-within-order-)
+      - [💡 Explanation:](#-explanation-1)
+    - [▶ Keep trying... *](#%E2%96%B6-keep-trying-)
+      - [💡 Explanation:](#-explanation-2)
+    - [▶ For what?](#%E2%96%B6-for-what)
+      - [💡 Explanation:](#-explanation-3)
+    - [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
+      - [💡 Explanation](#-explanation-1)
+    - [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
+      - [💡 Explanation](#-explanation-2)
+    - [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+      - [💡 Explanation:](#-explanation-4)
+    - [▶ Schrödinger's variable *](#%E2%96%B6-schr%C3%B6dingers-variable-)
+      - [💡 Explanation:](#-explanation-5)
+    - [▶ The chicken-egg problem *](#%E2%96%B6-the-chicken-egg-problem-)
+      - [💡 Explanation](#-explanation-3)
+    - [▶ Subclass relationships](#%E2%96%B6-subclass-relationships)
+      - [💡 Explanation:](#-explanation-6)
+    - [▶ Methods equality and identity](#%E2%96%B6-methods-equality-and-identity)
+      - [💡 Explanation](#-explanation-4)
+    - [▶ All-true-ation *](#%E2%96%B6-all-true-ation-)
+      - [💡 Explanation:](#-explanation-7)
+    - [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
+      - [💡 Explanation:](#-explanation-8)
+    - [▶ Strings and the backslashes](#%E2%96%B6-strings-and-the-backslashes)
+      - [💡 Explanation](#-explanation-5)
+    - [▶ not knot!](#%E2%96%B6-not-knot)
+      - [💡 Explanation:](#-explanation-9)
+    - [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
+      - [💡 Explanation:](#-explanation-10)
+    - [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
+      - [💡 Explanation:](#-explanation-11)
+    - [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
+      - [💡 Explanation:](#-explanation-12)
+    - [▶ yielding None](#%E2%96%B6-yielding-none)
+      - [💡 Explanation:](#-explanation-13)
+    - [▶ Yielding from... return! *](#%E2%96%B6-yielding-from-return-)
+      - [💡 Explanation:](#-explanation-14)
+    - [▶ Nan-reflexivity *](#%E2%96%B6-nan-reflexivity-)
+      - [💡 Explanation:](#-explanation-15)
+    - [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
+      - [💡 Explanation:](#-explanation-16)
+    - [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
+      - [💡 Explanation:](#-explanation-17)
+    - [▶ The mysterious key type conversion](#%E2%96%B6-the-mysterious-key-type-conversion)
+      - [💡 Explanation:](#-explanation-18)
+    - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-19)
+  - [Section: Slippery Slopes](#section-slippery-slopes)
+    - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
+      - [💡 Explanation:](#-explanation-20)
+    - [▶ Stubborn `del` operation](#%E2%96%B6-stubborn-del-operation)
+      - [💡 Explanation:](#-explanation-21)
+    - [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
+      - [💡 Explanation:](#-explanation-22)
+    - [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
+      - [💡 Explanation:](#-explanation-23)
+    - [▶ Lossy zip of iterators *](#%E2%96%B6-lossy-zip-of-iterators-)
+      - [💡 Explanation:](#-explanation-24)
+    - [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
+      - [💡 Explanation:](#-explanation-25)
+    - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
+      - [💡 Explanation:](#-explanation-26)
+    - [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
+      - [💡 Explanation](#-explanation-6)
+    - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
+      - [💡 Explanation:](#-explanation-27)
+    - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
+      - [💡 Explanation](#-explanation-7)
+    - [▶ Rounding like a banker *](#%E2%96%B6-rounding-like-a-banker-)
+      - [💡 Explanation:](#-explanation-28)
+    - [▶ Needles in a Haystack *](#%E2%96%B6-needles-in-a-haystack-)
+      - [💡 Explanation:](#-explanation-29)
+    - [▶ Splitsies *](#%E2%96%B6-splitsies-)
+      - [💡 Explanation:](#-explanation-30)
+    - [▶ Wild imports *](#%E2%96%B6-wild-imports-)
+      - [💡 Explanation:](#-explanation-31)
+    - [▶ All sorted? *](#%E2%96%B6-all-sorted-)
+      - [💡 Explanation:](#-explanation-32)
+    - [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
+      - [💡 Explanation:](#-explanation-33)
+  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
+    - [▶ Okay Python, Can you make me fly?](#%E2%96%B6-okay-python-can-you-make-me-fly)
+      - [💡 Explanation:](#-explanation-34)
+    - [▶ `goto`, but why?](#%E2%96%B6-goto-but-why)
+      - [💡 Explanation:](#-explanation-35)
+    - [▶ Brace yourself!](#%E2%96%B6-brace-yourself)
+      - [💡 Explanation:](#-explanation-36)
+    - [▶ Let's meet Friendly Language Uncle For Life](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life)
+      - [💡 Explanation:](#-explanation-37)
+    - [▶ Even Python understands that love is complicated](#%E2%96%B6-even-python-understands-that-love-is-complicated)
+      - [💡 Explanation:](#-explanation-38)
+    - [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
+      - [💡 Explanation:](#-explanation-39)
+    - [▶ Ellipsis *](#%E2%96%B6-ellipsis-)
+      - [💡 Explanation](#-explanation-8)
+    - [▶ Inpinity](#%E2%96%B6-inpinity)
+      - [💡 Explanation:](#-explanation-40)
+    - [▶ Let's mangle](#%E2%96%B6-lets-mangle)
+      - [💡 Explanation:](#-explanation-41)
+  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
+    - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
+      - [💡 Explanation](#-explanation-9)
+    - [▶ Teleportation](#%E2%96%B6-teleportation)
+      - [💡 Explanation:](#-explanation-42)
+    - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
+      - [💡 Explanation](#-explanation-10)
+  - [Section: Miscellaneous](#section-miscellaneous)
+    - [▶ `+=` is faster](#%E2%96%B6--is-faster)
+      - [💡 Explanation:](#-explanation-43)
+    - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
+      - [💡 Explanation](#-explanation-11)
+    - [▶ Slowing down `dict` lookups *](#%E2%96%B6-slowing-down-dict-lookups-)
+      - [💡 Explanation:](#-explanation-44)
+    - [▶ Bloating instance `dict`s *](#%E2%96%B6-bloating-instance-dicts-)
+      - [💡 Explanation:](#-explanation-45)
+    - [▶ Minor Ones *](#%E2%96%B6-minor-ones-)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+      - [Some nice Links!](#some-nice-links)
+- [🎓 License](#-license)
+  - [Surprise your friends as well!](#surprise-your-friends-as-well)
+  - [Need a pdf version?](#need-a-pdf-version)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 <p align="center"><img src="/images/logo.png" alt=""></p>
 <h1 align="center">Python, какого х*ра! 😱</h1>
 <p align="center">Изучаем и разбираемся в Python через неожиданные примеры.</p>
@@ -12,7 +160,7 @@ Python - прекрасно спроектированный высокоуро�
 
 И хотя некоторые примеры из тех, что ты увидишь ниже, не обязательно вызовут искреннюю реакцию "Какого х*ра?!", они раскрывают занятное поведение Python, с которым ты, вероятно, не знаком. Мне кажется (и хочется верить, что ты со мной согласишься), что это интригующий способ изучения происходящего "под капотом" у языка программирования.
 
-А если ты опытный Python-разработчик, эти сниппеты позволят попробовать свои силы и попытаться угадать, какого же все-таки х*ра. Ну или освежить память, если ты уже сталкивался с ними раньше! :sweat_smile:
+А если ты опытный Python-разработчик, эти сниппеты позволят попробовать свои силы и попытаться сходу угадать, какого же все-таки х*ра. Ну или освежить память, если ты уже сталкивался с ними раньше! :sweat_smile:
 
 PS: Если ты здесь не впервые, узнать о доработках можно [здесь](https://github.com/satwikkansal/wtfpython/releases/) (примеры, помеченные звездочкой, добавлены в последнем существенном обновлении). 
 
@@ -24,16 +172,16 @@ PS: Если ты здесь не впервые, узнать о доработ
 
 <!-- toc -->
 
-- [Структура примеров](#structure-of-the-examples)
-    + [▶ Мудрёный заголовок](#-some-fancy-title)
-- [Как пользоваться этим гайдом](#usage)
-- [👀 Примеры](#-examples)
-  * [Раздел: Напряги мозги!](#section-strain-your-brain)
-    + [▶ Первым делом *](#-first-things-first-)
-    + [▶ Строки бывают обманчивы](#-strings-can-be-tricky-sometimes)
-    + [▶ Осторожнее с последовательными операциями](#-be-careful-with-chained-operations)
-    + [▶ Как не нужно использовать `is`](#-how-not-to-use-is-operator)
-    + [▶ Хашбрауни](#-hash-brownies)
+- [Structure of the Examples](#structure-of-the-examples)
+    + [▶ Some fancy Title](#-some-fancy-title)
+- [Usage](#usage)
+- [👀 Examples](#-examples)
+  * [Section: Strain your brain!](#section-strain-your-brain)
+    + [▶ First things first! *](#-first-things-first-)
+    + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
+    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
+    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
+    + [▶ Hash brownies](#-hash-brownies)
     + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
     + [▶ Disorder within order *](#-disorder-within-order-)
     + [▶ Keep trying... *](#-keep-trying-)
@@ -59,7 +207,7 @@ PS: Если ты здесь не впервые, узнать о доработ
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-  * [Раздел: Кривые дорожки](#section-slippery-slopes)
+  * [Section: Slippery Slopes](#section-slippery-slopes)
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
     + [▶ The out of scope variable](#-the-out-of-scope-variable)
@@ -67,11 +215,11 @@ PS: Если ты здесь не впервые, узнать о доработ
     + [▶ Lossy zip of iterators *](#-lossy-zip-of-iterators-)
     + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
     + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-    + [▶ Отлов исключений](#-catching-the-exceptions)
+    + [▶ Catching the Exceptions](#-catching-the-exceptions)
     + [▶ Same operands, different story!](#-same-operands-different-story)
     + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-    + [▶ Округляем как банкиры *](#-rounding-like-a-banker-)
-    + [▶ Иголки в стоге сена *](#-needles-in-a-haystack-)
+    + [▶ Rounding like a banker *](#-rounding-like-a-banker-)
+    + [▶ Needles in a Haystack *](#-needles-in-a-haystack-)
     + [▶ Splitsies *](#-splitsies-)
     + [▶ Wild imports *](#-wild-imports-)
     + [▶ All sorted? *](#-all-sorted-)
@@ -88,16 +236,16 @@ PS: Если ты здесь не впервые, узнать о доработ
     + [▶ Let's mangle](#-lets-mangle)
   * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     + [▶ Skipping lines?](#-skipping-lines)
-    + [▶ Телепортация](#-teleportation)
+    + [▶ Teleportation](#-teleportation)
     + [▶ Well, something is fishy...](#-well-something-is-fishy)
-  * [Раздел: Разное](#section-miscellaneous)
-    + [▶ `+=` быстрее](#--is-faster)
+  * [Section: Miscellaneous](#section-miscellaneous)
+    + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups-)
     + [▶ Bloating instance `dict`s *](#-bloating-instance-dicts-)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
-- [Благодарности](#acknowledgements)
+- [Acknowledgements](#acknowledgements)
 - [🎓 License](#-license)
   * [Surprise your friends as well!](#surprise-your-friends-as-well)
   * [More content like this?](#more-content-like-this)
@@ -126,7 +274,7 @@ PS: Если ты здесь не впервые, узнать о доработ
 >
 > #### 💡 Объяснение:
 >
-> * Короткое объяснение того, что происходит и почему оно происходит.
+> * Короткое объяснение того, что происходит, и почему оно происходит.
 > ```py
 > # Некий код
 > # Еще примеры для дальнейшего прояснения (если необходимо)
@@ -144,7 +292,7 @@ PS: Если ты здесь не впервые, узнать о доработ
 
 Максимальную пользу от этих примеров, на мой взгляд, можно получить, читая их хронологически, и для каждого примера:
 - Внимательно прочитать исходный код, setting up пример. Опытный Python-разработчик должен успешно предугадать результат в большинстве случаев.
-- Прочитать вывод, который выдаст сниппет, и
+- Прочитать вывод, который выдаст пример, и
   + проверить, что вывод совпал с твоими ожиданиями;
   + убедиться, что знаешь причину, по которой вывод получился именно таким.
     - если не знаешь (что совершенно нормально), сделай глубокий вдох и прочитай объяснение (а если все еще не станет понятно, поори! И создай баг-репорт [тут](https://github.com/satwikkansal/wtfpython/issues/new)).
@@ -291,7 +439,7 @@ if a := some_func():
 >>> a = "some_string"
 >>> id(a)
 140420665652016
->>> id("some" + "_" + "string") # Обратите внимание, что идентификаторы одинаковые
+>>> id("some" + "_" + "string") # Обрати внимание, что идентификаторы совпадают
 140420665652016
 ```
 
@@ -347,7 +495,7 @@ False
 + Поведение в первом и втором сниппете обусловлено оптимизацией CPython, которая называется string interning - интернирование строк. Суть этой оптимизации в том, чтобы в некоторых случаях использовать существующие иммутабельные объекты вместо того, чтобы каждый раз создавать новый объект.
 + После интернирования многие переменные могут указывать на один и тот же строчный объект в памяти (и этим экономить память).
 + В примере выше строки неявно интернированы. Решение о том, стоит ли неявно интернировать строку, зависит от имплементации. Есть несколько правил, которые позволят предугадать, будет ли строка интернирована:
-  * Все строки длиной в 0 или 1 символ интернируются.
+  * Все пустые строки и строки длиной в 1 символ интернируются.
   * Строки интернируются at compile time (`'wtf'` будет интернирована, а `''.join(['w', 't', 'f'])` не будет)
   * Строки, не состоящие из букв ASCII, цифр или подчеркивания, не интернируются. Так что `'wtf!'` не была интернирована из-за `!`. Имплементация этого правила в CPython есть [тут](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   ![картинка](/images/string-intern/string_intern.png)

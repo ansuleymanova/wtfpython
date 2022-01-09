@@ -15,16 +15,16 @@ file_path = join(dirname(dirname(realpath(__file__))), "content.md")
 def fetch_updated_doc():
     """
     Fetch the latest version of the file at `url` and save it to `file_path`.
-    If anything goes wrong, do nothing.
+    If somwthing goes wrong, do nothing.
     """
     try:
-        print("Fetching the latest version...")
+        print("Загружаю свежую версию...")
         urlretrieve(url, file_path)
-        print("Done!")
+        print("Готово!")
     except Exception as e:
         print(e)
-        print("Uh oh, failed to check for the latest version, "
-              "using the local version for now.")
+        print("Ой, свежую версию загрузить не получилось, "
+              "пока буду использовать локальную.")
 
 
 def render_doc():
@@ -38,5 +38,5 @@ def load_and_read():
     render_doc()
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
     load_and_read()

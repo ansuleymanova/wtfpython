@@ -1,170 +1,220 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center">What the f*ck Python! 🐍</h1>
-<p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
+<h1 align="center">Python, какого х*ра! 🐍</h1>
+<p align="center"> Интересная коллекция неожиданных примеров и малоизвестных возможностей Python.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
+Переводы: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+Python - прекрасно спроектированный высокоуровневый исполняемый язык программирования. Он предоставляет нам множество инструментов для комфорта разработчика. Однако на первый взгляд результат выполнения приведенных здесь кусочков кода на Python может показаться неочевидным.
 
-Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
+Перед тобой занимательный проект, цель которого - объяснить, что именно происходит "под капотом" нескольких контр-интуитивных примеров и не слишком распространенных возможностей Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+И хотя некоторые примеры из тех, что ты увидишь ниже, не обязательно вызовут искреннюю реакцию "Какого х*ра?!", они раскрывают занятное поведение Python, с которым ты, вероятно, не знаком. Я нахожу такой способ знакомства с "начинкой" языка программирования заманчивым и думаю, что тебе он тоже покажется интересным!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+А если ты опытный Python-разработчик, эти сниппеты позволят попробовать свои силы и попытаться сходу угадать, какого же все-таки х*ра. Ну или освежить в памяти старое-доброе, если ты уже успел наступить на эти грабли :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+PS: Если ты здесь не впервые, узнать о доработках можно [здесь](https://github.com/satwikkansal/wtfpython/releases/).
 
-So, here we go...
+Погнали!
 
-# Table of Contents
+# Оглавление
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [Structure of the Examples](#structure-of-the-examples)
-- [Usage](#usage)
-- [👀 Examples](#-examples)
-  - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
-    - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
-    - [▶ Return return everywhere!](#-return-return-everywhere)
-    - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
-    - [▶ For what?](#-for-what)
-    - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    - [▶ `is` is not what it is!](#-is-is-not-what-it-is)
-    - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    - [▶ The sticky output function](#-the-sticky-output-function)
-    - [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
-    - [▶ The surprising comma](#-the-surprising-comma)
-    - [▶ Backslashes at the end of string](#-backslashes-at-the-end-of-string)
-    - [▶ not knot!](#-not-knot)
-    - [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
-    - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
-    - [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
-    - [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-    - [▶ yielding None](#-yielding-none)
-    - [▶ Mutating the immutable!](#-mutating-the-immutable)
-    - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
-    - [▶ When True is actually False](#-when-true-is-actually-false)
-    - [▶ From filled to None in one instruction...](#-from-filled-to-none-in-one-instruction)
-    - [▶ Subclass relationships *](#-subclass-relationships-)
-    - [▶ The mysterious key type conversion *](#-the-mysterious-key-type-conversion-)
-    - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+- [Структура примеров](#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2)
+- [Как пользоваться этим гайдом](#%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D1%8D%D1%82%D0%B8%D0%BC-%D0%B3%D0%B0%D0%B9%D0%B4%D0%BE%D0%BC)
+- [👀 Примеры](#-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B)
+  - [Секция: Напряги мозги!](#%D1%81%D0%B5%D0%BA%D1%86%D0%B8%D1%8F-%D0%BD%D0%B0%D0%BF%D1%80%D1%8F%D0%B3%D0%B8-%D0%BC%D0%BE%D0%B7%D0%B3%D0%B8)
+    - [▶ Строки бывают обманчивы *](#%E2%96%B6-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8-%D0%B1%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D0%BE%D0%B1%D0%BC%D0%B0%D0%BD%D1%87%D0%B8%D0%B2%D1%8B-)
+      - [💡 Объяснение:](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+    - [▶ Хашбрауни](#%E2%96%B6-%D1%85%D0%B0%D1%88%D0%B1%D1%80%D0%B0%D1%83%D0%BD%D0%B8)
+      - [💡 Объяснение](#-%D0%BE%D0%B1%D1%8A%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+    - [▶ Return return everywhere!](#%E2%96%B6-return-return-everywhere)
+      - [💡 Explanation:](#-explanation)
+    - [▶ Deep down, we're all the same. *](#%E2%96%B6-deep-down-were-all-the-same-)
+      - [💡 Explanation:](#-explanation-1)
+    - [▶ For what?](#%E2%96%B6-for-what)
+      - [💡 Explanation:](#-explanation-2)
+    - [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
+      - [💡 Explanation](#-explanation)
+    - [▶ `is` is not what it is!](#%E2%96%B6-is-is-not-what-it-is)
+      - [💡 Explanation:](#-explanation-3)
+    - [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+      - [💡 Explanation:](#-explanation-4)
+    - [▶ The sticky output function](#%E2%96%B6-the-sticky-output-function)
+      - [💡 Explanation](#-explanation-1)
+    - [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
+      - [💡 Explanation](#-explanation-2)
+    - [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
+      - [💡 Explanation:](#-explanation-5)
+    - [▶ Backslashes at the end of string](#%E2%96%B6-backslashes-at-the-end-of-string)
+      - [💡 Explanation](#-explanation-3)
+    - [▶ not knot!](#%E2%96%B6-not-knot)
+      - [💡 Explanation:](#-explanation-6)
+    - [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
+      - [💡 Explanation:](#-explanation-7)
+    - [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
+      - [💡 Explanation:](#-explanation-8)
+    - [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
+      - [💡 Explanation:](#-explanation-9)
+    - [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
+      - [💡 Explanation:](#-explanation-10)
+    - [▶ yielding None](#%E2%96%B6-yielding-none)
+      - [💡 Explanation:](#-explanation-11)
+    - [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
+      - [💡 Explanation:](#-explanation-12)
+    - [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
+      - [💡 Explanation:](#-explanation-13)
+    - [▶ When True is actually False](#%E2%96%B6-when-true-is-actually-false)
+      - [💡 Explanation:](#-explanation-14)
+    - [▶ From filled to None in one instruction...](#%E2%96%B6-from-filled-to-none-in-one-instruction)
+      - [💡 Explanation](#-explanation-4)
+    - [▶ Subclass relationships *](#%E2%96%B6-subclass-relationships-)
+      - [💡 Explanation:](#-explanation-15)
+    - [▶ The mysterious key type conversion *](#%E2%96%B6-the-mysterious-key-type-conversion-)
+      - [💡 Explanation:](#-explanation-16)
+    - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-17)
   - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    - [▶ Skipping lines?](#-skipping-lines)
-    - [▶ Teleportation *](#-teleportation-)
-    - [▶ Well, something is fishy...](#-well-something-is-fishy)
+    - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
+      - [💡 Explanation](#-explanation-5)
+    - [▶ Teleportation *](#%E2%96%B6-teleportation-)
+      - [💡 Explanation:](#-explanation-18)
+    - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
+      - [💡 Explanation](#-explanation-6)
   - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
-    - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
-    - [▶ Stubborn `del` operator *](#-stubborn-del-operator-)
-    - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
-    - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
-    - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-    - [▶ Catching the Exceptions](#-catching-the-exceptions)
-    - [▶ Same operands, different story!](#-same-operands-different-story)
-    - [▶ The out of scope variable](#-the-out-of-scope-variable)
-    - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-    - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-    - [▶ Needle in a Haystack](#-needle-in-a-haystack)
+    - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
+      - [💡 Explanation:](#-explanation-19)
+    - [▶ Stubborn `del` operator *](#%E2%96%B6-stubborn-del-operator-)
+      - [💡 Explanation:](#-explanation-20)
+    - [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
+      - [💡 Explanation:](#-explanation-21)
+    - [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
+      - [💡 Explanation:](#-explanation-22)
+    - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
+      - [💡 Explanation:](#-explanation-23)
+    - [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
+      - [💡 Explanation](#-explanation-7)
+    - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
+      - [💡 Explanation:](#-explanation-24)
+    - [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
+      - [💡 Explanation:](#-explanation-25)
+    - [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
+      - [💡 Explanation:](#-explanation-26)
+    - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
+      - [💡 Explanation](#-explanation-8)
+    - [▶ Needle in a Haystack](#%E2%96%B6-needle-in-a-haystack)
+      - [💡 Explanation:](#-explanation-27)
   - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
-    - [▶ `goto`, but why? *](#-goto-but-why-)
-    - [▶ Brace yourself! *](#-brace-yourself-)
-    - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
-    - [▶ Even Python understands that love is complicated *](#-even-python-understands-that-love-is-complicated-)
-    - [▶ Yes, it exists!](#-yes-it-exists)
-    - [▶ Inpinity *](#-inpinity-)
-    - [▶ Mangling time! *](#-mangling-time-)
+    - [▶ Okay Python, Can you make me fly? *](#%E2%96%B6-okay-python-can-you-make-me-fly-)
+      - [💡 Explanation:](#-explanation-28)
+    - [▶ `goto`, but why? *](#%E2%96%B6-goto-but-why-)
+      - [💡 Explanation:](#-explanation-29)
+    - [▶ Brace yourself! *](#%E2%96%B6-brace-yourself-)
+      - [💡 Explanation:](#-explanation-30)
+    - [▶ Let's meet Friendly Language Uncle For Life *](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life-)
+      - [💡 Explanation:](#-explanation-31)
+    - [▶ Even Python understands that love is complicated *](#%E2%96%B6-even-python-understands-that-love-is-complicated-)
+      - [💡 Explanation:](#-explanation-32)
+    - [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
+      - [💡 Explanation:](#-explanation-33)
+    - [▶ Inpinity *](#%E2%96%B6-inpinity-)
+      - [💡 Explanation:](#-explanation-34)
+    - [▶ Mangling time! *](#%E2%96%B6-mangling-time-)
+      - [💡 Explanation:](#-explanation-35)
   - [Section: Miscellaneous](#section-miscellaneous)
-    - [▶ `+=` is faster](#--is-faster)
-    - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    - [▶ Explicit typecast of strings](#-explicit-typecast-of-strings)
-    - [▶ Minor Ones](#-minor-ones)
+    - [▶ `+=` is faster](#%E2%96%B6--is-faster)
+      - [💡 Explanation:](#-explanation-36)
+    - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
+      - [💡 Explanation](#-explanation-9)
+    - [▶ Explicit typecast of strings](#%E2%96%B6-explicit-typecast-of-strings)
+      - [💡 Explanation:](#-explanation-37)
+    - [▶ Minor Ones](#%E2%96%B6-minor-ones)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
+      - [Some nice Links!](#some-nice-links)
 - [🎓 License](#-license)
   - [Help](#help)
-  - [Want to share wtfpython with friends?](#want-to-share-wtfpython-with-friends)
+  - [Surprise your geeky pythonist friends?](#surprise-your-geeky-pythonist-friends)
   - [Need a pdf version?](#need-a-pdf-version)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Structure of the Examples
+# Структура примеров
 
-All the examples are structured like below:
+Все примеры структурированы так:
 
-> ### ▶ Some fancy Title *
-> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
+> ### ▶ Мудрёный заголовок *
+> Звездочка в конце заголовка говорит о том, что этот пример был добавлен недавно и отсутствовал в первой версии.
 >
 > ```py
-> # Setting up the code.
-> # Preparation for the magic...
+> # Некий код
+> # Подготовка магии...
 > ```
 >
-> **Output (Python version):**
+> **Вывод (Версии Python):**
 > ```py
 > >>> triggering_statement
-> Probably unexpected output
+> Неожиданный вывод
 > ```
-> (Optional): One line describing the unexpected output.
+> (Опционально): Одна строчка с объяснением неожиданного вывода.
 >
 >
-> #### 💡 Explanation:
+> #### 💡 Объяснение:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * Короткое объяснение того, что происходит, и почему оно происходит.
 >   ```py
->   Setting up examples for clarification (if necessary)
+>   Еще примеры для дальнейшего прояснения (если необходимо)
 >   ```
->   **Output:**
+>   **Вывод:**
 >   ```py
->   >>> trigger # some example that makes it easy to unveil the magic
->   # some justified output
+>   >>> trigger # пример, легким движением руки разоблачающий магию
+>   # теперь уже ожидаемый результат
 >   ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+**Ремарка:** Все примеры протестированы в интерактивном интерпретаторе Python 3.5.2 и должны работать для всех версий Python, если перед выводом в явном виде не сказано об обратном.
 
-# Usage
+# Как пользоваться этим гайдом
 
-A nice way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+Максимальную пользу от этих примеров, на мой взгляд, можно получить, читая их хронологически, и для каждого примера:
+- Внимательно прочитать исходный код, демонстрирующий пример. Опытный Python-разработчик должен успешно предугадать результат в большинстве случаев.
+- Прочитать вывод, который выдаст пример, и
+  + проверить, что вывод совпал с твоими ожиданиями;
+  + убедиться, что знаешь причину, по которой вывод получился именно таким.
+    - если не знаешь (что совершенно нормально), сделай глубокий вдох и прочитай объяснение (а если все еще не станет понятно, поори! И создай баг-репорт [тут](https://github.com/satwikkansal/wtfpython/issues/new)).
+    - если знаешь, бережно похлопай себя по плечу и переходи к следующему примеру.
 
-PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+PS: А еще ты можешь читать WTFPython прямо в командной строке с помощью PyPi-пакета или npm-пакета (с поддержкой цветного форматирования).
 
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+Установка npm-пакета: [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
 $ npm install -g wtfpython
 ```
 
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+Альтернативно, установка PyPi-пакета: [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
 ```sh
 $ pip install wtfpython -U
 ```
 
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+Теперь можно просто ввести `wtfpython` в командной строке, чтобы открыть эту коллекцию в `$PAGER`, который ты предпочитаешь.
 
 ---
 
-# 👀 Examples
+# 👀 Примеры
 
 
-## Section: Strain your brain!
+## Секция: Напряги мозги!
 
-### ▶ Strings can be tricky sometimes *
+### ▶ Строки бывают обманчивы *
 
 1\.
 ```py
 >>> a = "some_string"
 >>> id(a)
 140420665652016
->>> id("some" + "_" + "string") # Notice that both the ids are same.
+>>> id("some" + "_" + "string") # Обрати внимание, что идентификаторы совпадают
 140420665652016
 ```
 
@@ -193,23 +243,23 @@ True
 False
 ```
 
-Makes sense, right?
+Логично, да?
 
-#### 💡 Explanation:
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+#### 💡 Объяснение:
++ Поведение в первом и втором сниппете обусловлено оптимизацией CPython, которая называется string interning - интернирование строк. Суть этой оптимизации в том, чтобы в некоторых случаях использовать существующие иммутабельные объекты вместо того, чтобы каждый раз создавать новый объект.
++ После интернирования многие переменные могут указывать на один и тот же строчный объект в памяти (и этим экономить память).
++ В примере выше строки неявно интернированы. Решение о том, стоит ли неявно интернировать строку, зависит от имплементации. Есть несколько правил, которые позволят предугадать, будет ли строка интернирована:
+  * Все пустые строки и строки длиной в 1 символ интернируются.
+  * Строки интернируются at compile time (`'wtf'` будет интернирована, а `''.join(['w', 't', 'f']` не будет)
+  * Строки, не состоящие из букв ASCII, цифр или подчеркивания, не интернируются. Этим объясняется то, что `'wtf!'` не была интернирована (из-за `!`). Имплементация этого правила в CPython есть [тут](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="/images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
++ Когда `a` и `b` объявляются равными `"wtf!"` в одной и той же строке, интерпретатор Python создает новый объект, а затем references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
 + Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 
 
 ---
 
-### ▶ Time for some hash brownies!
+### ▶ Хашбрауни
 
 1\.
 ```py
@@ -219,7 +269,7 @@ some_dict[5.0] = "JavaScript"
 some_dict[5] = "Python"
 ```
 
-**Output:**
+**Вывод:**
 ```py
 >>> some_dict[5.5]
 "Ruby"
@@ -229,9 +279,9 @@ some_dict[5] = "Python"
 "Python"
 ```
 
-"Python" destroyed the existence of "JavaScript"?
+"Python" уничтожил "JavaScript"?
 
-#### 💡 Explanation
+#### 💡 Объяснение
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
 * Immutable objects with same value always have the same hash in Python.
